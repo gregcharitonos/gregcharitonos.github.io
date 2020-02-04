@@ -1,6 +1,14 @@
 body {
-  margin:0;
-  background: black;
+  margin:2px;
+  background: white;
+  display: grid;
+  justify-items: center;
+  font-size: 1.1rem;
+  font-family: sans-serif;
+}
+
+a {
+  color:inherit;
 }
 
 #background {
@@ -8,4 +16,21 @@ body {
   top:0;
   left:0;
   z-index: -1;
+}
+
+#main {
+  padding: 2%;
+  width: 98%;
+  display: grid;
+  justify-items:center;
+}
+@media (min-width: 600px) {
+  #main {
+   width:60vw; 
+  }
+}
+
+.card {
+  padding: 2%;
+  width:98%;
 }

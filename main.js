@@ -1,5 +1,7 @@
 init = function () {
   anim = null;
+  prev_scroll = 0;
+  delta_scroll = 0;
   canvas = document.querySelector("#background");
   ctx = canvas.getContext("2d");
 
@@ -11,14 +13,17 @@ init = function () {
     for (var i in bits) {
       var o = bits[i][3];
       ctx.font = (16 * o) + "px monospace";
-      bits[i][2] -= o ** 2;
-      if (bits[i][2] < 0) {
+      bits[i][2] -= delta_scroll * o ** 2;
+      if (bits[i][2] < -5) {
         bits[i][2] = canvas.height + 5;
         bits[i][1] = Math.floor(Math.random() * canvas.width);
+      } else if (bits[i][2] > canvas.height + 5) {
+        bits[i][2] = -5;
       }
-      ctx.fillStyle = `hsla(256, 77%, 38%, ${o})`;
+      ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.5})`;// hsl(0, 0%, 0%)
       ctx.fillText(bits[i][0], bits[i][1], bits[i][2]);
     }
+    delta_scroll = 0;
   }
 
   resetCanvas = function () {
@@ -36,7 +41,12 @@ init = function () {
     }
     render();
   }
+
+  window.addEventListener("resize", resetCanvas, false);
+  window.addEventListener("scroll", () => {
+    delta_scroll = window.scrollY - prev_scroll;
+    prev_scroll = window.scrollY;
+  }, false)
   resetCanvas();
-  window.addEventListener("resize",resetCanvas,false);
 }
 window.onload = init;
