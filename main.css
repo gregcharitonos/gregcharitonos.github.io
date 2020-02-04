@@ -20,17 +20,28 @@ a {
 
 #main {
   padding: 2%;
-  width: 98%;
+  min-width: 98%;
   display: grid;
   justify-items:center;
 }
 @media (min-width: 600px) {
   #main {
-   width:60vw; 
+   min-width:60vw; 
   }
 }
 
 .card {
   padding: 2%;
   width:98%;
+}
+
+#grades {
+  border:1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+#grades > tr > td {
+  padding: 1%;
+  border:1px solid black;
 }

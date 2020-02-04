@@ -1,9 +1,18 @@
+async function get_grades() {
+  let response = await fetch("/grades.json");
+  let data = await response.json();
+  return data;
+}
+
 init = function () {
   anim = null;
+  gradesEl = document.querySelector("#grades");
   prev_scroll = 0;
   delta_scroll = 0;
   canvas = document.querySelector("#background");
   ctx = canvas.getContext("2d");
+  
+  
 
   render = function () {
     anim = requestAnimationFrame(render);
@@ -20,7 +29,7 @@ init = function () {
       } else if (bits[i][2] > canvas.height + 5) {
         bits[i][2] = -5;
       }
-      ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.5})`;// hsl(0, 0%, 0%)
+      ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.5})`; // hsl(0, 0%, 0%)
       ctx.fillText(bits[i][0], bits[i][1], bits[i][2]);
     }
     delta_scroll = 0;
@@ -48,5 +57,19 @@ init = function () {
     prev_scroll = window.scrollY;
   }, false)
   resetCanvas();
+  
+  get_grades().then((grades)=>{
+    for(key in grades){
+      let tr = document.createElement("tr");
+      let code = document.createElement("td");
+      let name = document.createElement("td");
+      code.innerHTML = `<a target="_new" href="https://www.rug.nl/ocasys/rug/vak/show?code=${key}">${key}</a>`;
+      name.innerText = grades[key]["name"];
+      tr.appendChild(code);
+      tr.appendChild(name);
+      gradesEl.appendChild(tr);
+    }
+  })
+
 }
 window.onload = init;
