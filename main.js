@@ -36,8 +36,8 @@ init = function () {
   }
 
   resetCanvas = function () {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = screen.width;//window.innerWidth;
+    canvas.height = screen.height;//window.innerHeight;
     ctx = canvas.getContext("2d");
     cancelAnimationFrame(anim);
     bits = [];
@@ -51,7 +51,7 @@ init = function () {
     render();
   }
 
-  window.addEventListener("resize", resetCanvas, false);
+  //window.addEventListener("resize", resetCanvas, false);
   window.addEventListener("scroll", () => {
     delta_scroll = window.scrollY - prev_scroll;
     prev_scroll = window.scrollY;
@@ -59,19 +59,29 @@ init = function () {
   }, false)
   resetCanvas();
   
+  dyear = {
+    "2017-2018":16,
+    "2018-2019":17,
+    "2019-2020":18
+  };
+  
   get_grades().then((grades)=>{
     for(key in grades){
       let tr = document.createElement("tr");
       let code = document.createElement("td");
       let name = document.createElement("td");
-      let url = `https://www.rug.nl/ocasys/rug/main/setyear?year=17&referer=/ocasys/rug/vak/show%3Fcode%3D${key}`;
+      let year = document.createElement("td");
+      let yr = dyear[grades[key]["year"]];
+      let url = `https://www.rug.nl/ocasys/rug/main/setyear?year=${yr}&referer=/ocasys/rug/vak/show%3Fcode%3D${key}`;
       if(key[key.length-1] == "A"){
-        url = `https://www.rug.nl/ocasys/rug/main/setyear?year=15&referer=/ocasys/rug/vak/show%3Fcode%3D${key.substring(0,key.length-1)}`;
+        url = `https://www.rug.nl/ocasys/rug/main/setyear?year=${yr}&referer=/ocasys/rug/vak/show%3Fcode%3D${key.substring(0,key.length-1)}`;
       }
       code.innerHTML = `<a target="_blank" href="${url}">${key}</a>`;
       name.innerText = grades[key]["name"];
+      year.innerText = grades[key]["year"];
       tr.appendChild(code);
       tr.appendChild(name);
+      tr.appendChild(year);
       gradesEl.appendChild(tr);
     }
   })
