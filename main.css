@@ -39,6 +39,7 @@ a {
   border:1px solid black;
   border-collapse: collapse;
   text-align: center;
+  width: 100%;
 }
 
 #grades > tr > td {

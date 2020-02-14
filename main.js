@@ -12,17 +12,16 @@ init = function () {
   canvas = document.querySelector("#background");
   ctx = canvas.getContext("2d");
   
-  
 
   render = function () {
-    anim = requestAnimationFrame(render);
+   // anim = requestAnimationFrame(render);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     var t = Date.now();
     for (var i in bits) {
       var o = bits[i][3];
       ctx.font = (16 * o) + "px monospace";
-      bits[i][2] -= delta_scroll * o ** 2;
+      bits[i][2] -= Math.sign(delta_scroll) * (o**2);
       if (bits[i][2] < -5) {
         bits[i][2] = canvas.height + 5;
         bits[i][1] = Math.floor(Math.random() * canvas.width);
@@ -30,6 +29,7 @@ init = function () {
         bits[i][2] = -5;
       }
       ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.5})`; // hsl(0, 0%, 0%)
+      ctx.strokeStyle = `hsla(256, 0%, 0%, ${o*0.5})`; // hsl(0, 0%, 0%)
       ctx.fillText(bits[i][0], bits[i][1], bits[i][2]);
     }
     delta_scroll = 0;
@@ -55,6 +55,7 @@ init = function () {
   window.addEventListener("scroll", () => {
     delta_scroll = window.scrollY - prev_scroll;
     prev_scroll = window.scrollY;
+    render();
   }, false)
   resetCanvas();
   
@@ -63,7 +64,11 @@ init = function () {
       let tr = document.createElement("tr");
       let code = document.createElement("td");
       let name = document.createElement("td");
-      code.innerHTML = `<a target="_new" href="https://www.rug.nl/ocasys/rug/vak/show?code=${key}">${key}</a>`;
+      let url = `https://www.rug.nl/ocasys/rug/main/setyear?year=17&referer=/ocasys/rug/vak/show%3Fcode%3D${key}`;
+      if(key[key.length-1] == "A"){
+        url = `https://www.rug.nl/ocasys/rug/main/setyear?year=15&referer=/ocasys/rug/vak/show%3Fcode%3D${key.substring(0,key.length-1)}`;
+      }
+      code.innerHTML = `<a target="_blank" href="${url}">${key}</a>`;
       name.innerText = grades[key]["name"];
       tr.appendChild(code);
       tr.appendChild(name);
