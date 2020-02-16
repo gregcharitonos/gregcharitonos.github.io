@@ -15,7 +15,7 @@ init = function () {
   delta_scroll = 0;
   canvas = document.querySelector("#background");
   ctx = canvas.getContext("2d");
-  drag_const = 0.04;
+  drag_const = 0.05;
   velocity = 0;
   acceleration = 0;
   scrollDelay = 50;
@@ -33,7 +33,7 @@ init = function () {
     for (var i in bits) {
       var o = bits[i][3];
       ctx.font = (16 * o) + "px monospace";
-      bits[i][2] -= velocity/8 * ((o)**2);
+      bits[i][2] -= velocity/15 * ((o)**2);
       if (bits[i][2] < -5) {
         bits[i][2] = canvas.height + 5;
         bits[i][1] = Math.floor(Math.random() * canvas.width);
