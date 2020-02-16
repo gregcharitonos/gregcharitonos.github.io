@@ -16,23 +16,25 @@ init = function () {
   
 
   render = function () {
-   // anim = requestAnimationFrame(render);
+    anim = requestAnimationFrame(render);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
+    
     var t = Date.now();
     for (var i in bits) {
       var o = bits[i][3];
       ctx.font = (16 * o) + "px monospace";
-      bits[i][2] -= Math.sign(delta_scroll) * (o**2);
+      bits[i][2] -= Math.sign(delta_scroll) * ((o)**2);
       if (bits[i][2] < -5) {
         bits[i][2] = canvas.height + 5;
         bits[i][1] = Math.floor(Math.random() * canvas.width);
       } else if (bits[i][2] > canvas.height + 5) {
         bits[i][2] = -5;
       }
-      ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.5})`; // hsl(0, 0%, 0%)
-      ctx.strokeStyle = `hsla(256, 0%, 0%, ${o*0.5})`; // hsl(0, 0%, 0%)
-      ctx.fillText(bits[i][0], bits[i][1], bits[i][2]);
+      ctx.beginPath();
+      ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.1})`; // hsl(0, 0%, 0%)
+      //ctx.fillText(bits[i][0], bits[i][1], bits[i][2]);
+      ctx.arc(bits[i][1],bits[i][2],bits[i][0]*bits[i][3],0,Math.PI*2);
+      ctx.fill();
     }
     delta_scroll = 0;
   }
@@ -44,7 +46,8 @@ init = function () {
     cancelAnimationFrame(anim);
     bits = [];
     for (var i = 0; i < 100; i++) {
-      var b = Math.round(Math.random());
+      //var b = Math.round(Math.random());
+      var b = 2 + Math.floor(Math.random() * 8);
       var x = Math.floor(Math.random() * canvas.width);
       var y = Math.floor(Math.random() * canvas.height);
       var o = Math.floor(Math.random() * 100) / 100;
@@ -57,7 +60,7 @@ init = function () {
   window.addEventListener("scroll", () => {
     delta_scroll = window.scrollY - prev_scroll;
     prev_scroll = window.scrollY;
-    render();
+    //render();
   }, false)
   resetCanvas();
   
