@@ -5,25 +5,35 @@ async function get_grades() {
 }
 
 init = function () {
-  anim = null;
   gradesEl = document.querySelector("#grades");
+  toggleListEl = document.querySelector("#toggleList");
+  courseWrapper = document.querySelector("#course-wrapper");
+  
+  /* background stuff */
+  anim = null;
   prev_scroll = 0;
   delta_scroll = 0;
   canvas = document.querySelector("#background");
-  toggleListEl = document.querySelector("#toggleList");
-  courseWrapper = document.querySelector("#course-wrapper");
   ctx = canvas.getContext("2d");
+  drag_const = 0.04;
+  velocity = 0;
+  acceleration = 0;
+  scrollDelay = 50;
+  scrollTimer = null;
   
-
   render = function () {
     anim = requestAnimationFrame(render);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+    acceleration = delta_scroll;
+    //acceleration -= acceleration * drag_const;
+    velocity += acceleration;
+    velocity -= velocity * drag_const;
+    velocity = Math.floor(10000 * velocity)/10000;
     var t = Date.now();
     for (var i in bits) {
       var o = bits[i][3];
       ctx.font = (16 * o) + "px monospace";
-      bits[i][2] -= Math.sign(delta_scroll) * ((o)**2);
+      bits[i][2] -= velocity/8 * ((o)**2);
       if (bits[i][2] < -5) {
         bits[i][2] = canvas.height + 5;
         bits[i][1] = Math.floor(Math.random() * canvas.width);
@@ -57,10 +67,18 @@ init = function () {
   }
 
   //window.addEventListener("resize", resetCanvas, false);
+  function clearScroll(){
+    delta_scroll = 0;
+    prev_scroll = null;
+  }
   window.addEventListener("scroll", () => {
-    delta_scroll = window.scrollY - prev_scroll;
+    if(prev_scroll != null){
+      delta_scroll = window.scrollY - prev_scroll;
+    }
     prev_scroll = window.scrollY;
-    //render();
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(clearScroll, scrollDelay);
+    //console.log(delta_scroll);
   }, false)
   resetCanvas();
   
