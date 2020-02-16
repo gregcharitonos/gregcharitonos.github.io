@@ -46,3 +46,34 @@ a {
   padding: 1%;
   border:1px solid black;
 }
+
+#toggleList {
+  border:0.1vmin solid rgba(0, 0, 0, 0.50);
+  color:black;
+  background: none;
+  background-position: 0 0%;
+  display: block;
+  padding: 1vh 1vw;
+  box-shadow: 0 2px 2px #ccc;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+#toggleList.active {
+  box-shadow: 0 2px 2px #ccc inset;
+}
+
+#toggleList::before {
+  content:"Show "
+}
+#toggleList.active::before {
+  content:"Hide "
+}
+#course-wrapper {
+  height:0px;
+  overflow-y: hidden;
+}
+
+#course-wrapper.active {
+  height: auto;
+}

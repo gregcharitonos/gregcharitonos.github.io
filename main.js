@@ -10,6 +10,8 @@ init = function () {
   prev_scroll = 0;
   delta_scroll = 0;
   canvas = document.querySelector("#background");
+  toggleListEl = document.querySelector("#toggleList");
+  courseWrapper = document.querySelector("#course-wrapper");
   ctx = canvas.getContext("2d");
   
 
@@ -85,6 +87,12 @@ init = function () {
       gradesEl.appendChild(tr);
     }
   })
-
+  
+  toggleList = function(){
+    toggleListEl.classList.toggle("active");
+    courseWrapper.classList.toggle("active");
+  }
+  
+  toggleListEl.addEventListener("click",toggleList,false);
 }
 window.onload = init;
