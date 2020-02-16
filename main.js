@@ -71,7 +71,7 @@ init = function () {
     delta_scroll = 0;
     prev_scroll = null;
   }
-  window.addEventListener("scroll", () => {
+  function getScrollChange(){
     if(prev_scroll != null){
       delta_scroll = window.scrollY - prev_scroll;
     }
@@ -79,7 +79,8 @@ init = function () {
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(clearScroll, scrollDelay);
     //console.log(delta_scroll);
-  }, false)
+  }
+  window.addEventListener("scroll",getScrollChange, false);
   resetCanvas();
   
   dyear = {
