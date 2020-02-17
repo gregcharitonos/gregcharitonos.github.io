@@ -42,7 +42,7 @@ init = function () {
       }
       ctx.beginPath();
       //ctx.fillStyle = `hsla(256, 0%, 0%, ${o*0.1})`; // hsl(0, 0%, 0%)
-      ctx.fillStyle = `hsl(256, 0%, ${100 * (2*(1-o))}%)`; // hsl(0, 0%, 0%)
+      ctx.fillStyle = `hsl(256, 0%, ${100 * (5*(1-o))}%)`; // hsl(0, 0%, 0%)
       //ctx.fillText(bits[i][0], bits[i][1], bits[i][2]);
       ctx.arc(bits[i][1],bits[i][2],bits[i][0]*bits[i][3],0,Math.PI*2);
       ctx.fill();
