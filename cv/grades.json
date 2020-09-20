@@ -1,0 +1,227 @@
+{
+  "UCGHU204": {
+    "name": "\"Knowledge is Power\"",
+    "grade": "A-",
+    "date": "28-01-2020",
+    "credits": 5.0,
+    "percent": 77,
+    "timestamp": 1580166000.0,
+    "year": "2019-2020"
+  },
+  "UCGSS215": {
+    "name": "Social Networks & Social Complexity",
+    "grade": "A",
+    "date": "24-01-2020",
+    "credits": 5.0,
+    "percent": 80,
+    "timestamp": 1579820400.0,
+    "year": "2019-2020"
+  },
+  "UCGSC222": {
+    "name": "Machine Learning",
+    "grade": "A+",
+    "date": "22-01-2020",
+    "credits": 5.0,
+    "percent": 86,
+    "timestamp": 1579647600.0,
+    "year": "2019-2020"
+  },
+  "UCGSC304": {
+    "name": "Science Communication",
+    "grade": "A",
+    "date": "08-11-2019",
+    "credits": 5.0,
+    "percent": 80,
+    "timestamp": 1573167600.0,
+    "year": "2019-2020"
+  },
+  "INBSEC-08": {
+    "name": "Information Security",
+    "grade": "6.",
+    "date": "07-11-2019",
+    "credits": 5.0,
+    "percent": 60.0,
+    "timestamp": 1573081200.0,
+    "year": "2019-2020"
+  },
+  "UCGSC211": {
+    "name": "Applied Mechanics",
+    "grade": "A-",
+    "date": "01-11-2019",
+    "credits": 5.0,
+    "percent": 77,
+    "timestamp": 1572562800.0,
+    "year": "2019-2020"
+  },
+  "UCGAC204": {
+    "name": "Projects & Workshops Year 2",
+    "grade": "B+",
+    "date": "16-07-2019",
+    "credits": 10.0,
+    "percent": 74,
+    "timestamp": 1563228000.0,
+    "year": "2018-2019"
+  },
+  "UCGSS212": {
+    "name": "Decision Making",
+    "grade": "A",
+    "date": "16-06-2019",
+    "credits": 5.0,
+    "percent": 80,
+    "timestamp": 1560636000.0,
+    "year": "2018-2019"
+  },
+  "UCGSC216": {
+    "name": "Philosophy of Natural Sciences",
+    "grade": "A-",
+    "date": "14-06-2019",
+    "credits": 5.0,
+    "percent": 77,
+    "timestamp": 1560463200.0,
+    "year": "2018-2019"
+  },
+  "UCGAC202": {
+    "name": "Research & Methodology Year 2",
+    "grade": "A",
+    "date": "05-04-2019",
+    "credits": 15.0,
+    "percent": 80,
+    "timestamp": 1554415200.0,
+    "year": "2018-2019"
+  },
+  "UCGSS310": {
+    "name": "Criminal Law & Criminology",
+    "grade": "B",
+    "date": "03-04-2019",
+    "credits": 5.0,
+    "percent": 70,
+    "timestamp": 1554242400.0,
+    "year": "2018-2019"
+  },
+  "PSMIN07": {
+    "name": "Social Influence",
+    "grade": "6",
+    "date": "24-01-2019",
+    "credits": 5.0,
+    "percent": 60.0,
+    "timestamp": 1548284400.0,
+    "year": "2018-2019"
+  },
+  "UCGSS216": {
+    "name": "Human Factors and Human Error",
+    "grade": "A+",
+    "date": "21-01-2019",
+    "credits": 5.0,
+    "percent": 86,
+    "timestamp": 1548025200.0,
+    "year": "2018-2019"
+  },
+  "UCGHU210": {
+    "name": "Freedom & Responsibility",
+    "grade": "A-",
+    "date": "01-11-2018",
+    "credits": 5.0,
+    "percent": 77,
+    "timestamp": 1541026800.0,
+    "year": "2018-2019"
+  },
+  "UCGSS209": {
+    "name": "Cognitive Psychology",
+    "grade": "B-",
+    "date": "30-10-2018",
+    "credits": 5.0,
+    "percent": 67,
+    "timestamp": 1540854000.0,
+    "year": "2018-2019"
+  },
+  "UCGAC101A": {
+    "name": "Projects & Workshops Year 1",
+    "grade": "A-",
+    "date": "12-07-2018",
+    "credits": 10.0,
+    "percent": 77,
+    "timestamp": 1531346400.0,
+    "year": "2017-2018"
+  },
+  "UCGAC102A": {
+    "name": "Research & Methodology Year 1",
+    "grade": "A+",
+    "date": "11-07-2018",
+    "credits": 10.0,
+    "percent": 86,
+    "timestamp": 1531260000.0,
+    "year": "2017-2018"
+  },
+  "UCGSC106A": {
+    "name": "Introduction to Programming",
+    "grade": "A+",
+    "date": "15-06-2018",
+    "credits": 5.0,
+    "percent": 86,
+    "timestamp": 1529013600.0,
+    "year": "2017-2018"
+  },
+  "UCGSS105A": {
+    "name": "Biopsychology",
+    "grade": "A",
+    "date": "15-06-2018",
+    "credits": 5.0,
+    "percent": 80,
+    "timestamp": 1529013600.0,
+    "year": "2017-2018"
+  },
+  "UCGSC112": {
+    "name": "The Systems View on Life",
+    "grade": "A+",
+    "date": "06-04-2018",
+    "credits": 5.0,
+    "percent": 86,
+    "timestamp": 1522965600.0,
+    "year": "2017-2018"
+  },
+  "UCGSC103A": {
+    "name": "Linear Algebra",
+    "grade": "A",
+    "date": "03-04-2018",
+    "credits": 5.0,
+    "percent": 80,
+    "timestamp": 1522706400.0,
+    "year": "2017-2018"
+  },
+  "UCGHU104A": {
+    "name": "Media Theory & Practice",
+    "grade": "A+",
+    "date": "29-01-2018",
+    "credits": 5.0,
+    "percent": 86,
+    "timestamp": 1517180400.0,
+    "year": "2017-2018"
+  },
+  "UCGSS103A": {
+    "name": "Political Philosophy",
+    "grade": "A",
+    "date": "26-01-2018",
+    "credits": 5.0,
+    "percent": 80,
+    "timestamp": 1516921200.0,
+    "year": "2017-2018"
+  },
+  "UCGAC103A": {
+    "name": "Exploring Challenges of Modern Society: Business",
+    "grade": "A",
+    "date": "03-11-2017",
+    "credits": 7.5,
+    "percent": 80,
+    "timestamp": 1509663600.0,
+    "year": "2017-2018"
+  },
+  "UCGAC104": {
+    "name": "Academic Writing",
+    "grade": "B",
+    "date": "30-10-2017",
+    "credits": 2.5,
+    "percent": 70,
+    "timestamp": 1509318000.0,
+    "year": "2017-2018"
+  }
+}

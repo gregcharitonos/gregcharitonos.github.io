@@ -1,0 +1,30 @@
+* {
+  margin:0;
+}
+*+* {
+  margin-top:1em;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  place-content: center;
+}
+
+#background {
+  background-color: #222;
+  color:#ddd;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  width:100vw;
+  height:100vh;
+  margin:0;
+}
+
+#card {
+  backdrop-filter: blur(5px);
+}
+
+/* edit me */
+
