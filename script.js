@@ -19,28 +19,26 @@ init = function(){
       dx = e.alpha/36; dx = Math.sign(dx) * Math.min(1,Math.abs(dx));
       dy = e.beta/36; dy = Math.sign(dy) * Math.min(1,Math.abs(dy));
     }
-    E.card.style.transform = `
-      rotateY(${Math.floor(dx*10)}deg)
-      rotateX(${Math.floor(dy*10)}deg)
-    `
-    E.card.style.boxShadow = `
-      ${Math.floor(-dx * 5)}px ${Math.floor(-dy * 5)}px 2px black
-    `
+    // E.card.style.transform = `
+    //   rotateY(${Math.floor(dx*10)}deg)
+    //   rotateX(${Math.floor(dy*10)}deg)
+    // `
+    // E.card.style.boxShadow = `
+    //   ${Math.floor(-dx * 5)}px ${Math.floor(-dy * 5)}px 2px black
+    // `
     E.icon.style.boxShadow = `
-    inset ${Math.floor(dx * 3)}px ${Math.floor(dy * 3)}px 2px black
-    `
-    E.icon.style.transform = `
-      rotateY(${Math.floor(dx*10)}deg)
-      rotateX(${Math.floor(dy*10)}deg)
+    inset ${Math.floor(dx * 3)}px ${Math.floor(dy * 3)}px 5px black
     `
 
     E.icon.style.backgroundPosition = `
-    ${Math.floor(dx*10)}px
+    ${-10 + Math.floor(dx*10)}px
     ${-10 + Math.floor(dy*10)}px
     `
   }
 
    E.card.addEventListener("mousemove",parallax,false);
    window.addEventListener("deviceorientation",parallax,false);
+
+  background_init();
 }
 window.onload = init;
