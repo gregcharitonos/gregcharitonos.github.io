@@ -11,13 +11,20 @@
 }
 
 body {
+  background-color: #222;
+}
+
+#main {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  z-index: 10;
   display: grid;
   place-items: center;
   place-content: center;
-  background-color: #222;
-  width:100vw;
-  height:100vh;
-  position: fixed;
+  margin:0;
 }
 
 a {
