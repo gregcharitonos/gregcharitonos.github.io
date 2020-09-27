@@ -20,6 +20,7 @@ reset_canvas = function(){
   hard_state = [];
   soft_state = [];
   delta = 0.04;
+  delay = 300;
   hasTouched = false;
 
   for(let i=0; i<total_num; i++){
@@ -27,11 +28,10 @@ reset_canvas = function(){
     soft_state.push(0);
   }
   timer = null;
-  ctx.fillStyle=`hsl(0, 0%, 15%)`;
+  ctx.fillStyle=`hsl(200, 30%, 25%)`;
   ctx.strokeStyle="hsl(0,0%,75%)";
   render();
 }
-
 render = function(){
   
   ctx.beginPath();
@@ -59,8 +59,8 @@ render = function(){
     let y = Math.floor(i/num_across)*c_width + (c_width-w)/2;
     
     ctx.moveTo(x,y);
-    ctx.fillRect(x,y,w,w);
-    //ctx.strokeRect(x,y,w,w)
+    //ctx.fillRect(x,y,w,w);
+    ctx.strokeRect(x,y,w,w)
   }
 
   if(!is_equal){
@@ -71,7 +71,7 @@ render = function(){
     timer = Date.now();
     return true;
   }
-  if(Date.now() - timer > 50){
+  if(Date.now() - timer > 300){
     timer = null;
   } else {
     return true;
