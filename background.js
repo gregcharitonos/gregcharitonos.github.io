@@ -31,7 +31,6 @@ reset_canvas = function(){
   ctx.fillStyle=`hsl(200, 30%, 25%)`;
   ctx.strokeStyle="hsl(0,0%,75%)";
   render();
-  action_loop();
 }
 render = function(){
   
@@ -39,6 +38,7 @@ render = function(){
   ctx.clearRect(0,0,canvas.width,canvas.height)
   anim = requestAnimationFrame(render);
   let i = soft_state.length;
+  let is_equal = true;
 
   if(hasTouched){
     hard_state[c_index] = 1 - hard_state[c_index];
@@ -46,6 +46,14 @@ render = function(){
   }
 
   while(i--){
+    if(hard_state[i] != soft_state[i]){
+      is_equal = false;
+    }
+    if(!is_equal){
+      let s = Math.sign(hard_state[i] - soft_state[i])
+      soft_state[i] += s*delta;
+      soft_state[i] = Math.round(100*soft_state[i])/100;
+    }
     let w = c_width*soft_state[i];
     let x=(i%num_across)*c_width + (c_width-w)/2;
     let y = Math.floor(i/num_across)*c_width + (c_width-w)/2;
@@ -54,18 +62,8 @@ render = function(){
     //ctx.fillRect(x,y,w,w);
     ctx.strokeRect(x,y,w,w)
   }
-}
 
-action_loop = function(){
-  setTimeout(action_loop,1000/60)
-  let is_equal = (JSON.stringify(hard_state) === JSON.stringify(soft_state));
   if(!is_equal){
-    let i=hard_state.length;
-    while(i--){
-      let s = Math.sign(hard_state[i] - soft_state[i])
-      soft_state[i] += s*delta;
-      soft_state[i] = Math.round(100*soft_state[i])/100;
-    }
     return true;
   }
 
@@ -73,14 +71,13 @@ action_loop = function(){
     timer = Date.now();
     return true;
   }
-
   if(Date.now() - timer > 300){
     timer = null;
   } else {
     return true;
   }
 
-  let i=soft_state.length;
+  i=soft_state.length;
   while(i--){
     ns = [
       i-num_across-1,i-num_across,i-num_across+1,
@@ -104,7 +101,6 @@ action_loop = function(){
       hard_state[i] = 0;
     }
   }
-
 }
 
 background_init = function(){
