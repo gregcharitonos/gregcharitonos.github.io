@@ -151,6 +151,10 @@ body > footer {
   width:100%;
 }
 
+body > footer a {
+  color:inherit;
+}
+
 #loader {
   position: fixed;
   top:calc(50vh - 2.5vmin);
