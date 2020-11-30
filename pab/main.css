@@ -49,7 +49,7 @@ header > nav {
   place-content: center;
   place-items: center;
   position: absolute;
-  top:20vh;
+  top:25vh;
   grid-area: nav;
   background-color: var(--theme-col-1);
   color:white;
