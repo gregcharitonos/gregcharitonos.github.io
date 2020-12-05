@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    init = function () {
+      snake = {
+        tail: 5,
+        trail: [],
+        x: 10,
+        y: 10,
+        dx: 1,
+        dy: 0
+      };
+      canvas = document.querySelector("#canvas");
+      ctx = canvas.getContext("2d");
+      cw = 10;
+      a = {
+        x: 0,
+        y: 0
+      };
+      canvas.width = 500;
+      canvas.height = 500;
+
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        snake.x += snake.dx;
+        snake.y += snake.dy;
+        if (snake.x > canvas.width / 10) {
+          snake.x = 0;
+        }
+        if (snake.x < 0) {
+          snake.x = canvas.width / 10;
+        }
+        if (snake.y < 0) {
+          snake.y = canvas.height / 10;
+        }
+        if (snake.y > canvas.height / 10) {
+          snake.y = 0;
+        }
+        if (a.x == snake.x && a.y == snake.y) {
+          snake.tail++;
+          a.x = Math.floor(Math.random() * 100);
+          a.y = Math.floor(Math.random() * 100);
+        }
+        while (snake.trail.length > snake.tail) {
+          snake.trail.pop();
+        }
+        let i = snake.trail.length;
+        while (i--) {
+          if (snake.x == snake.trail[i].x && snake.y == snake.trail[i].y) {
+            snake.tail = 5;
+          }
+          ctx.fillRect(snake.trail[i].x * cw, snake.trail[i].y * cw, cw, cw);
+        }
+        ctx.fillRect(a.x, a.y, cw, cw);
+        snake.trail.unshift({
+          x: snake.x,
+          y: snake.y
+        });
+        setTimeout(loop, 1000 / 15);
+      }
+
+      function directionEvent(e) {
+        if (e.which == 37) {
+          snake.dx = -1;
+          snake.dy = 0;
+        } else
+        if (e.which == 38) {
+          snake.dx = 0;
+          snake.dy = -1;
+        } else
+        if (e.which == 39) {
+          snake.dx = 1;
+          snake.dy = 0;
+        } else
+        if (e.which == 40) {
+          snake.dx = 0;
+          snake.dy = 1;
+        }
+      }
+
+      window.addEventListener("keydown", directionEvent, false);
+      loop();
+    }
+    window.onload = init;
+  </script>
+</body>
+
+</html>
