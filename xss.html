@@ -9,11 +9,12 @@
 </head>
 <body>
     <script>
-        // window.parent.frames[0].postMessage({
-        //     type:"waf",
-        //     safe:true,
-        //     str:"foobar"
-        // });
+        window.parent.postMessage({
+            type:"waf",
+            safe:true,
+            str:"foobar",
+            identifier:"xss"
+        });
 
         // function bruteforce() {
         //     for (let i=0; i<1e10; i++){
